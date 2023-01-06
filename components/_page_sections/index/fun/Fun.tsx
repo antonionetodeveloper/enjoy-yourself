@@ -21,7 +21,6 @@ export const FunFactsAboutYou = () => {
 		setCount(responseAgify.data.count)
 		setGender(responseGenderize.data.gender)
 		setProbabity(responseGenderize.data.probability * 100)
-
 		setWasRequired(true)
 	}
 
@@ -97,9 +96,7 @@ const Container = styled.section`
 const FunInput = styled.input`
 	width: 20vw;
 
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-		sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI";
 	font-weight: 500;
 	font-size: 1.5vw;
 	box-shadow: 0 0 0.4vw rgba(0, 0, 0, 0.5), 0 0 0 0.15vw transparent;
