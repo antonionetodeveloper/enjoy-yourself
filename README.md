@@ -1,8 +1,6 @@
-# CRUD
-<span> Create, Read, Update, Delete</span>
+# just 4 fun
 
-## URL: https://crud-antonio-neto.vercel.app/entrar
-<p>feel free for user everything that i've done here</p>
+## URL: https://just-for-fun-xi.vercel.app
 
 ### Remeber to run "npm i" for install node modules
-### Feel free for use
+<p>feel free for user everything that i've done here</p>
