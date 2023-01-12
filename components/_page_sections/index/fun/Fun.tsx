@@ -3,6 +3,7 @@ import styled from "styled-components"
 import AgifyAPI from "../../../../services/Apis/AgiFy/request"
 import GenderizeAPI from "../../../../services/Apis/Genderize/request"
 import { Check } from "../../../buttons/check"
+import { TechCard } from "../../../card/tech"
 
 export const FunFactsAboutYou = () => {
 	const [wasRequired, setWasRequired] = useState(false)
@@ -24,8 +25,15 @@ export const FunFactsAboutYou = () => {
 		setWasRequired(true)
 	}
 
+	const keyPressed = (event) => {
+		if (event.key == "Enter") {
+			event.preventDefault()
+			getData(searchName)
+		}
+	}
+
 	return (
-		<Container>
+		<Container onKeyDown={keyPressed}>
 			<div className="getData">
 				<FunInput
 					onChange={(event) => {
@@ -49,12 +57,16 @@ export const FunFactsAboutYou = () => {
 							<p>I guess that name does not exist.</p>
 						) : (
 							<div>
-								<p>Name: {name}.</p>
-								<p>It was researched {count} times.</p>
-								<p>I guess you have about {age} years old</p>
-								<p>
-									You are {gender} within {probabity}% sure.
-								</p>
+								<TechCard>
+									<div>
+										<p>Name: {name}.</p>
+										<p>It was researched {count} times.</p>
+										<p>I guess you have about {age} years old.</p>
+										<p>
+											You are {gender} within {probabity}% sure.
+										</p>
+									</div>
+								</TechCard>
 							</div>
 						)}
 					</div>
@@ -91,6 +103,43 @@ const Container = styled.section`
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+
+		div {
+			animation: slide-in-blurred-top 1s cubic-bezier(0.23, 1, 0.32, 1) both;
+			div {
+				display: flex;
+				flex-direction: column;
+				gap: 4vw;
+				z-index: 2;
+				p {
+					z-index: 2;
+					color: white;
+					font-size: 2vw;
+					font-weight: 700;
+				}
+			}
+
+			@keyframes slide-in-blurred-top {
+				0% {
+					-webkit-transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+					transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+					-webkit-transform-origin: 50% 0%;
+					transform-origin: 50% 0%;
+					-webkit-filter: blur(40px);
+					filter: blur(40px);
+					opacity: 0;
+				}
+				100% {
+					-webkit-transform: translateY(0) scaleY(1) scaleX(1);
+					transform: translateY(0) scaleY(1) scaleX(1);
+					-webkit-transform-origin: 50% 50%;
+					transform-origin: 50% 50%;
+					-webkit-filter: blur(0);
+					filter: blur(0);
+					opacity: 1;
+				}
+			}
+		}
 	}
 `
 const FunInput = styled.input`
