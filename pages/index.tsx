@@ -1,7 +1,9 @@
 import { BackgroundGradientTop } from "../components/backgrounds/Rainbow_background"
 import { TextFlickerInGlow } from "../components/text/Text-flicker-in-glow"
+import { Footer } from "../components/_footer/footer"
 
 import { CatSection } from "../components/_page_sections/index/Cat/Cat_section"
+import { DogSection } from "../components/_page_sections/index/dog/Dog_section"
 import { FunFactsAboutYou } from "../components/_page_sections/index/fun/Fun"
 
 import CatAPI from "../services/Apis/Cat/request"
@@ -9,7 +11,7 @@ import CatFactAPI from "../services/Apis/CatFact/request"
 import DogAPI from "../services/Apis/Dog/request"
 import DogFactAPI from "../services/Apis/DogFact/request"
 
-export default function Home({ dog, dogFact, catImage, catFact }: any) {
+export default function Home({ dogImage, dogFact, catImage, catFact }: any) {
 	return (
 		<>
 			<header>
@@ -20,11 +22,9 @@ export default function Home({ dog, dogFact, catImage, catFact }: any) {
 			<main>
 				<CatSection catFact={catFact} catImage={catImage} />
 				<FunFactsAboutYou />
-				{/* <div>
-					<img src={dog} alt="dog" />
-					<p>{dogFact}</p>
-				</div> */}
+				<DogSection dogFact={dogFact} dogImage={dogImage} />
 			</main>
+			<Footer />
 		</>
 	)
 }
@@ -37,7 +37,7 @@ export async function getStaticProps() {
 
 	return {
 		props: {
-			dog: responseDog.data.message,
+			dogImage: responseDog.data.message,
 			dogFact: responseFactDog.data.data[0].attributes.body,
 			catImage: responseCatImage.data[0].url,
 			catFact: responseFactCat.data.fact,

@@ -1,22 +1,22 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react"
 import styled from "styled-components"
-import CatAPI from "../../../../services/Apis/Cat/request"
-import CatFactAPI from "../../../../services/Apis/CatFact/request"
+import DogAPI from "../../../../services/Apis/Dog/request"
+import DogFactAPI from "../../../../services/Apis/DogFact/request"
 import { Refresh } from "../../../buttons/refresh"
 import { RainbowCard } from "../../../card/rainbow"
 
-export function CatSection({ catFact, catImage }) {
+export function DogSection({ dogFact, dogImage }) {
 	const [isLoading, setIsLoading] = useState("notLoading")
-	const [catText, setCatText] = useState("")
-	const [catSrc, setCatSrc] = useState("")
+	const [dogText, setDogText] = useState("")
+	const [dogSrc, setDogSrc] = useState("")
 
 	async function RefreshInformations() {
 		setIsLoading("Loading")
-		const responseCatImage = await CatAPI.get("v1/images/search", {})
-		setCatSrc(responseCatImage.data[0].url)
-		const responseFactCat = await CatFactAPI.get("fact", {})
-		setCatText(responseFactCat.data.fact)
+		const responseDogSrc = await DogAPI.get("api/breeds/image/random", {})
+		setDogSrc(responseDogSrc.data.message)
+		const responseFactDog = await DogFactAPI.get("api/v2/facts?limit=80", {})
+		setDogText(responseFactDog.data.data[0].attributes.body)
 		setIsLoading("notLoading")
 	}
 
@@ -24,16 +24,16 @@ export function CatSection({ catFact, catImage }) {
 		<Container loading={isLoading}>
 			<div className="text">
 				<div className="content">
-					{catText == "" ? <p>{catFact}</p> : <p>{catText}</p>}
+					{dogText == "" ? <p>{dogFact}</p> : <p>{dogText}</p>}
 				</div>
 			</div>
 
 			<div className="image">
 				<RainbowCard />
-				{catSrc == "" ? (
-					<img src={catImage} alt="Cat" className="Cat" />
+				{dogSrc == "" ? (
+					<img src={dogImage} alt="Dog" className="Dog" />
 				) : (
-					<img src={catSrc} alt="Cat" className="Cat" />
+					<img src={dogSrc} alt="Dog" className="Dog" />
 				)}
 			</div>
 
