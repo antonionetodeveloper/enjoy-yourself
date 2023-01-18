@@ -26,19 +26,6 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse,
 ) {
-	const password = req.query.password || req.body.password || ""
-	const isProduction = process.env.NODE_ENV === "production"
-	const hasPasswordMatch = password === process.env.OPENAI_PASSWORD
-
-	if (isProduction && !hasPasswordMatch) {
-		res.status(404).json({
-			error: {
-				message: "Not found",
-			},
-		})
-		return
-	}
-
 	if (!configuration.apiKey) {
 		res.status(500).json({
 			error: {
