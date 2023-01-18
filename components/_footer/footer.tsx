@@ -4,12 +4,7 @@ export const Footer = () => {
 	return (
 		<Container>
 			<div>
-				<p>Feito por : Antônio Fernandes</p>
-			</div>
-			<div>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, nam.
-				</p>
+				<p>Feito por: Antônio Fernandes</p>
 			</div>
 		</Container>
 	)

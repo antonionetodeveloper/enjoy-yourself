@@ -104,6 +104,11 @@ const Container = styled.section`
 		justify-content: center;
 		align-items: center;
 
+		p {
+			font-size: 1.8vw;
+			font-weight: 700;
+		}
+
 		div {
 			animation: slide-in-blurred-top 1s cubic-bezier(0.23, 1, 0.32, 1) both;
 			div {
