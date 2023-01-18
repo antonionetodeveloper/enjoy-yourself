@@ -12,8 +12,8 @@ export const ChatGPT = () => {
 	const [text, setText] = useState("")
 
 	async function getInformation(question) {
-		//const url = "https://crud-antonio-neto.vercel.app/"
-		const url = "http://localhost:3000/"
+		const url = "https://just-for-fun-xi.vercel.app/"
+		//const url = "http://localhost:3000/"
 		if (question.length != 0) {
 			setLoading(true)
 
