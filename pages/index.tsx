@@ -3,6 +3,7 @@ import { TextFlickerInGlow } from "../components/text/Text-flicker-in-glow"
 import { Footer } from "../components/_footer/footer"
 
 import { CatSection } from "../components/_page_sections/index/Cat/Cat_section"
+import { ChatGPT } from "../components/_page_sections/index/chatGPT/ChatGPT"
 import { DogSection } from "../components/_page_sections/index/dog/Dog_section"
 import { FunFactsAboutYou } from "../components/_page_sections/index/fun/Fun"
 
@@ -23,6 +24,7 @@ export default function Home({ dogImage, dogFact, catImage, catFact }: any) {
 				<CatSection catFact={catFact} catImage={catImage} />
 				<FunFactsAboutYou />
 				<DogSection dogFact={dogFact} dogImage={dogImage} />
+				<ChatGPT />
 			</main>
 			<Footer />
 		</>
