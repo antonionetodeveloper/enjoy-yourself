@@ -1,21 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { Configuration, OpenAIApi } from "openai"
 
-class OpenAIError extends Error {
-	constructor(message: string) {
-		super(message)
-	}
-
-	response = {
-		status: 500,
-		data: {
-			error: {
-				message: "An error occurred during your request.",
-			},
-		},
-	}
-}
-
 const configuration = new Configuration({
 	apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
 })
@@ -57,12 +42,9 @@ export default async function handler(
 		})
 		res.status(200).json({ result: completion.data.choices[0].text })
 	} catch (error) {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		if (error instanceof OpenAIError) {
-			if (error.response) {
-				console.error(error.response.status, error.response.data)
-				res.status(error.response.status).json(error.response.data)
-			}
+		if (error.response) {
+			console.error(error.response.status, error.response.data)
+			res.status(error.response.status).json(error.response.data)
 		}
 
 		if (error instanceof Error) {

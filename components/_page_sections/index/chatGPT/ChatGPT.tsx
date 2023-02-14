@@ -18,7 +18,16 @@ export const ChatGPT = () => {
 			setLoading(true)
 
 			axios
-				.get(url + "api/chatgpt" + "?question=" + question)
+				.post(
+					url + "api/chatgpt" + "?question=" + question,
+					{},
+					{
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
+						},
+					},
+				)
 				.then((response) => {
 					setText(response.data.result)
 					setDisplay("pos-search")
